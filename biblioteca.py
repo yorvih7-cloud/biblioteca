@@ -1,3 +1,4 @@
+
 # importaciones
 from color import pintar
 
@@ -116,6 +117,31 @@ def eliminar_libro():
     # Mensaje si no encuentra el libro
     pintar("Libro no encontrado.\n", "rojo")
 
+#Actualizar informacion de libors
+
+def modificar_libro():
+    titulo_buscar = input("Ingresa el título del libro que deseas modificar: ")
+    
+    # Recorremos los libros dentro del diccionario 'libreria' de tu amigo
+    for libro in libreria.values():
+        if libro['titulo'].lower() == titulo_buscar.lower():
+            print(f"\nLibro encontrado: {libro['titulo']} - Autor: {libro['autor']}")
+            
+            # Pedir los nuevos datos
+            nuevo_titulo = input("Nuevo título (deja en blanco para conservar el actual): ")
+            nuevo_autor = input("Nuevo autor (deja en blanco para conservar el actual): ")
+            
+            # Si el usuario escribió algo, se actualiza; si lo dejó en blanco, se conserva
+            if nuevo_titulo.strip():
+                libro['titulo'] = nuevo_titulo
+            if nuevo_autor.strip():
+                libro['autor'] = nuevo_autor
+                
+            print("¡Libro modificado con éxito!")
+            return
+            
+    print("El libro no existe en la biblioteca.")
+
 # Menú principal
 def menu_principal():
 
@@ -127,7 +153,8 @@ def menu_principal():
         pintar("2. Mostrar libros", "azul")
         pintar("3. Buscar libro", "azul")
         pintar("4. Eliminar libro", "azul")
-        pintar("5. Salir", "azul")
+        pintar("5. Modificar libro", "azul")
+        pintar("6. Salir", "azul")
 
         # Solicita una opción
         opcion = input("\nSeleccione una opción: ")
@@ -146,6 +173,9 @@ def menu_principal():
             eliminar_libro()
 
         elif opcion == "5":
+            modificar_libro() #Nueva Funcion para modificar libros 
+        
+        elif opcion == "6":
             pintar("\nCerrando el sistema de biblioteca... ¡Hasta luego!", "naranja")
             break
 
@@ -154,3 +184,4 @@ def menu_principal():
 
 # Inicio del programa
 menu_principal()
+
