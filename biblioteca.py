@@ -1,3 +1,6 @@
+# importaciones
+from color import pintar
+
 # Variables globales
 libreria = {
     "libro1": {
