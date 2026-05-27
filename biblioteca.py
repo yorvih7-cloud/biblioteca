@@ -33,18 +33,18 @@ def agregar_libro():
 
     # Valida datos obligatorios
     if not titulo or not autor:
-        print("Error: El título y el autor son obligatorios.")
+        pintar("Error: El título y el autor son obligatorios.", "rojo")
         return
 
     # Valida el año
     if año_lanzamiento < 0:
-        print("Error: El año debe ser positivo.")
+        pintar("Error: El año debe ser positivo.", "rojo")
         return
 
     # Verifica libros duplicados
     for libro in libreria.values():
         if libro["titulo"].lower() == titulo.lower():
-            print("Error: El libro ya existe.")
+            pintar("Error: El libro ya existe.", "rojo")
             return
 
     # Incrementa el contador
@@ -60,19 +60,19 @@ def agregar_libro():
         "año_lanzamiento": año_lanzamiento
     }
 
-    print("Libro agregado correctamente.")
+    pintar("Libro agregado correctamente.", "verde")
 
 # Función para mostrar libros
 def mostrar_libros():
 
     # Verifica si hay libros
     if len(libreria) == 0:
-        print("No hay libros registrados")
+        pintar("No hay libros registrados", "amarillo")
 
     else:
         # Recorre y muestra los libros
         for clave, libro in libreria.items():
-            print(f"{clave}: {libro}")
+            pintar(f"{clave}: {libro}", "verde_claro")
 
 # Función para buscar libros
 def buscar_libro():
@@ -84,12 +84,12 @@ def buscar_libro():
     for libro in libreria.values():
         if libro["titulo"].lower() == titulo.lower():
 
-            print("Libro encontrado:")
-            print(libro)
+            pintar("Libro encontrado:", "verde")
+            pintar(libro, "verde_claro")
             return
 
     # Mensaje si no existe
-    print("Libro no encontrado")
+    pintar("Libro no encontrado", "rojo")
 
 # Función para eliminar libros
 def eliminar_libro():
@@ -106,15 +106,15 @@ def eliminar_libro():
 
             if confirmar.lower() == "s":
                 del libreria[clave]
-                print("Libro eliminado correctamente.\n")
+                pintar("Libro eliminado correctamente.\n", "verde")
 
             else:
-                print("Eliminación cancelada.")
+                pintar("Eliminación cancelada.", "amarillo")
 
             return
 
     # Mensaje si no encuentra el libro
-    print("Libro no encontrado.\n")
+    pintar("Libro no encontrado.\n", "rojo")
 
 # Menú principal
 def menu_principal():
@@ -122,12 +122,12 @@ def menu_principal():
     while True:
 
         # Muestra el menú
-        print("\n===== BIBLIOTECA =====")
-        print("1. Registrar libro")
-        print("2. Mostrar libros")
-        print("3. Buscar libro")
-        print("4. Eliminar libro")
-        print("5. Salir")
+        pintar("\n===== BIBLIOTECA =====", "cian")
+        pintar("1. Registrar libro", "azul")
+        pintar("2. Mostrar libros", "azul")
+        pintar("3. Buscar libro", "azul")
+        pintar("4. Eliminar libro", "azul")
+        pintar("5. Salir", "azul")
 
         # Solicita una opción
         opcion = input("\nSeleccione una opción: ")
@@ -146,11 +146,11 @@ def menu_principal():
             eliminar_libro()
 
         elif opcion == "5":
-            print("\nCerrando el sistema de biblioteca... ¡Hasta luego!")
+            pintar("\nCerrando el sistema de biblioteca... ¡Hasta luego!", "naranja")
             break
 
         else:
-            print("Opción no válida. Intente de nuevo.")
+            pintar("Opción no válida. Intente de nuevo.", "rojo")
 
 # Inicio del programa
 menu_principal()
