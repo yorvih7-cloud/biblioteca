@@ -1,0 +1,31 @@
+libreria = {}
+contador_id = 0
+
+
+def agregar_libro(titulo, autor, año_lanzamiento):
+    global contador_id
+
+    if not titulo or not autor:
+        print("Error: El título y el autor son obligatorios.")
+        return
+
+    if not isinstance(año_lanzamiento, int) or año_lanzamiento < 0:
+        print("Error: El año de lanzamiento debe ser un número entero positivo.")
+        return
+
+    for libro in libreria.values():
+        if libro["nombre"].lower() == titulo.lower() and libro["autor"].lower() == autor.lower():
+            print(f"Error: El libro '{titulo}' de {autor} ya existe.")
+            return
+
+    contador_id += 1
+    clave = f"libro_{contador_id}"
+    libreria[clave] = {
+        "nombre": titulo,
+        "autor": autor,
+        "año_lanzamiento": año_lanzamiento,
+    }
+    print(f"Libro '{titulo}' agregado como '{clave}'.")
+
+    else:
+        print(f"Error: No se encontró '{clave}'.")
