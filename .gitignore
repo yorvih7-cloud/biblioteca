@@ -1,0 +1,43 @@
+# Cache de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+venv/
+.env/
+.venv/
+
+# Archivos de compilacion
+build/
+dist/
+*.egg-info/
+
+# Archivos temporales
+*.log
+*.tmp
+*.swp
+
+# Config de editores
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Cobertura
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
