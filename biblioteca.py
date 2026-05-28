@@ -151,3 +151,14 @@ def menu_principal():
 
 # Inicio del programa
 menu_principal()
+
+def eliminar_libro():
+    titulo = input("Ingrese el título del libro a eliminar: ")
+
+    for libro in biblioteca:
+        if libro["titulo"].lower() == titulo.lower():
+            biblioteca.remove(libro)
+            print("Libro eliminado correctamente.")
+            return
+
+    print("Libro no encontrado.")
